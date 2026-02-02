@@ -1,0 +1,7 @@
+Step,Count
+Linked individual participants,6302
+Missing thyroid hormones,47
+Missing metabolic outcomes,3286
+Missing covariates,48
+Extreme outliers (|z|>4),164
+Small categorical levels (<5%),96

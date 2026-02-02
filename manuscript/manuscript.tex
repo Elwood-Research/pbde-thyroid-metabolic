@@ -1,0 +1,159 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{setspace}
+\doublespacing
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{float}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Serum Polybrominated Diphenyl Ethers (PBDEs), Thyroid Hormones, and Metabolic Health: A Cross-Sectional Analysis of NHANES Data}
+\author{Elwood Research}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Polybrominated diphenyl ethers (PBDEs) are persistent organic pollutants widely used as flame retardants. Their structural similarity to thyroid hormones raises concerns about endocrine disruption and subsequent metabolic effects. This study investigated the associations between serum PBDE levels, thyroid hormone concentrations, and markers of lipid metabolism and insulin resistance using data from the National Health and Nutrition Examination Survey (NHANES) 2005--2012. We analyzed a sample of 2,661 adults with individual-level thyroid and metabolic data linked to pooled serum PBDE measurements. Multiple linear regression models, adjusted for age, sex, race/ethnicity, BMI, and serum cotinine, revealed that higher concentrations of BDE-100 and BDE-154 were significantly associated with lower Free Thyroxine (FT4) levels. Furthermore, positive associations were observed between several PBDE congeners and serum triglycerides, total cholesterol, and LDL-cholesterol. BDE-47 and BDE-99 were also positively associated with HOMA-IR, indicating increased insulin resistance. These findings suggest that environmental PBDE exposure is linked to thyroid disruption and unfavorable metabolic profiles in the U.S. adult population.
+\end{abstract}
+
+\newpage
+
+\section{Introduction}
+
+Polybrominated diphenyl ethers (PBDEs) are a class of brominated flame retardants that were widely used in consumer products, including electronics, furniture, and textiles, from the 1970s until their gradual phase-out in the early 2000s. Due to their lipophilic nature and persistence, they bioaccumulate in human tissues and are now ubiquitous environmental contaminants. PBDEs are structurally similar to thyroid hormones, specifically thyroxine (T4), which has led to their identification as potent endocrine disruptors.
+
+The primary objective of this study is to evaluate the association between serum PBDE levels (specifically congeners 47, 99, 100, 153, and 154) and thyroid hormone levels (TSH and Free T4). Additionally, we aim to assess the association between serum PBDE levels and metabolic parameters, including lipid profiles (Total Cholesterol, LDL, HDL, and Triglycerides) and insulin resistance (measured by HOMA-IR). Finally, we explore the potential for thyroid hormone disruption to serve as a mediating pathway between PBDE exposure and metabolic outcomes.
+
+Previous research using NHANES data has consistently shown measurable levels of PBDEs in the U.S. population \cite{Sjodin2008}. Studies have reported associations between serum PBDE concentrations and altered thyroid function tests, although results have varied across different demographics and congeners \cite{Chen2013, Makey2016, Turyk2008}. Thyroid hormones are central regulators of basal metabolic rate, lipid metabolism, and glucose homeostasis. Disruption of thyroid signaling by PBDEs is hypothesized to have downstream effects on metabolic health, potentially contributing to dyslipidemia and insulin resistance \cite{Bernert2007, Laclaustra2018, Lee2007, Lim2008}.
+
+\section{Materials and Methods}
+
+\subsection{Study Population}
+
+This study utilized data from the National Health and Nutrition Examination Survey (NHANES), a program of studies designed to assess the health and nutritional status of adults and children in the United States. We combined data from cycles 2005--2006, 2007--2008, 2009--2010, and 2011--2012. Participants were included if they were 20 years of age or older and non-pregnant. We required valid laboratory measurements for serum PBDEs, thyroid hormones (TSH and Free T4), and metabolic markers (lipids and HOMA-IR). The final analytic sample consisted of 2,661 individuals. The selection process is detailed in the STROBE flow diagram (Figure \ref{fig:strobe}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../04-analysis/outputs/figures/strobe_diagram.png}
+    \caption{STROBE Flow Diagram showing participant selection and exclusion criteria.}
+    \label{fig:strobe}
+\end{figure}
+
+\subsection{Laboratory Measurements}
+
+\subsubsection{Serum PBDEs}
+Serum PBDE levels were measured in pooled samples. Individual participant data were linked to pooled results using the pool identifiers provided in the NHANES datasets. Each individual within a pool was assigned the concentration measured for that pool. We focused on the most prevalent congeners: BDE-47, BDE-99, BDE-100, BDE-153, and BDE-154. All PBDE concentrations were log10-transformed for analysis to normalize their distributions.
+
+\subsubsection{Thyroid Hormones}
+Thyroid-stimulating hormone (TSH) and Free Thyroxine (Free T4) were measured using standard NHANES laboratory protocols. TSH values were log10-transformed.
+
+\subsubsection{Metabolic Outcomes}
+Lipid profiles, including LDL-cholesterol, HDL-cholesterol, and triglycerides, were measured in fasting subsamples. Insulin resistance was assessed using the Homeostatic Model Assessment of Insulin Resistance (HOMA-IR), calculated as: [Fasting Insulin (µU/mL) $\times$ Fasting Glucose (mg/dL)] / 405. HOMA-IR and triglycerides were log10-transformed.
+
+\subsection{Covariates}
+
+We adjusted for several potential confounders in our regression models:
+\begin{itemize}
+    \item Age (years, continuous)
+    \item Sex (Male, Female)
+    \item Race/Ethnicity (Non-Hispanic White, Non-Hispanic Black, Mexican American, Other Hispanic, Other/Multiracial)
+    \item Body Mass Index (BMI, kg/m²)
+    \item Serum Cotinine (ng/mL), used as a marker for tobacco smoke exposure.
+\end{itemize}
+
+\subsection{Statistical Analysis}
+
+All analyses accounted for the complex, multistage, probability sampling design of NHANES. We used the specific pooled sample weights (WTSMSMPA) to provide nationally representative estimates. 
+
+Continuous variables were screened for extreme outliers, and observations with an absolute z-score > 4 were removed. Categorical variable levels with less than 5\% membership were excluded or collapsed to ensure statistical stability.
+
+Multiple linear regression models were used to evaluate the associations between PBDE congeners and each outcome (thyroid hormones and metabolic markers). Models were adjusted for all covariates mentioned above. Statistical significance was set at p < 0.05. Analyses were performed using Python with the \texttt{pandas}, \texttt{statsmodels}, and \texttt{scipy} libraries.
+
+\section{Results}
+
+\subsection{Descriptive Statistics}
+
+Table \ref{tab:table1} presents the descriptive statistics for the study population. The mean age of the participants was 43.1 years. The sample was approximately balanced by sex (51.7\% female). The majority of the population was Non-Hispanic White (70.2\%).
+
+\begin{table}[H]
+    \centering
+    \caption{Characteristics of the Study Population}
+    \label{tab:table1}
+    \input{../04-analysis/outputs/tables/table1.tex}
+\end{table}
+
+\subsection{PBDEs and Thyroid Hormones}
+
+The associations between serum PBDEs and thyroid hormones are summarized in Table \ref{tab:regression} and Figure \ref{fig:forest_t4}. We found significant inverse associations between BDE-100 (log\_LBCBR4) and BDE-154 (log\_LBCBR7) with Free T4 levels. Specifically, each unit increase in log10-transformed BDE-154 was associated with a 0.033 ng/dL decrease in FT4 (p = 0.001). No significant associations were found between PBDEs and log-TSH levels.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../04-analysis/outputs/figures/forest_LBXT4F.png}
+    \caption{Forest plot of associations between PBDE congeners and Free T4 levels.}
+    \label{fig:forest_t4}
+\end{figure}
+
+\subsection{PBDEs and Metabolic Outcomes}
+
+Significant associations were observed between PBDEs and several metabolic markers. Most notably, BDE-154 was strongly and positively associated with LDL-cholesterol ($\beta$ = 12.15, p < 0.001) and total cholesterol ($\beta$ = 0.42, p < 0.001). 
+
+Triglyceride levels were positively associated with nearly all measured PBDE congeners. For example, BDE-47 (log\_LBCBR3) showed a significant positive association with log-triglycerides ($\beta$ = 0.14, p = 0.006).
+
+Regarding insulin resistance, both BDE-47 ($\beta$ = 0.41, p = 0.036) and BDE-99 ($\beta$ = 0.36, p = 0.030) were positively associated with HOMA-IR.
+
+\begin{table}[H]
+    \centering
+    \caption{Regression Coefficients (95\% CI) for Associations Between PBDEs and Outcomes}
+    \label{tab:regression}
+    \resizebox{\textwidth}{!}{
+        \input{../04-analysis/outputs/tables/regression_table.tex}
+    }
+\end{table}
+
+\section{Discussion}
+
+\subsection{Interpretation of Findings}
+
+This study provides evidence that serum levels of PBDEs are associated with altered thyroid function and unfavorable metabolic profiles in U.S. adults. The inverse associations found between BDE-100 and BDE-154 with Free T4 suggest that PBDE exposure may shift individuals toward a subclinical hypothyroid state. These findings are critical given that even subtle reductions in thyroid hormone levels can have significant impacts on metabolic health.
+
+The observed increases in triglycerides, total cholesterol, and LDL-cholesterol associated with PBDE exposure support the hypothesis that these flame retardants interfere with lipid metabolism. The particularly strong association between BDE-154 and LDL-cholesterol is noteworthy. Furthermore, the link between BDE-47/BDE-99 and HOMA-IR suggests that PBDEs may also play a role in the development of insulin resistance.
+
+\subsection{Comparison with Existing Literature}
+
+Our results align with previous studies identifying PBDEs as thyroid disruptors. The inverse relationship with Free T4 has been reported in other NHANES cohorts \cite{Chen2013, Makey2016}. The structural similarity between PBDEs and T4 allows these compounds to compete for binding sites on transport proteins like transthyretin (TTR), potentially increasing T4 clearance \cite{Sjodin2008}.
+
+The metabolic associations we observed mirror earlier findings regarding persistent organic pollutants and diabetes risk \cite{Lim2008, Lee2007}. Our study extends this by demonstrating these effects across multiple metabolic domains (lipids and insulin) in more recent NHANES cycles.
+
+\subsection{Potential Biological Mechanisms}
+
+Several mechanisms may explain these associations. Beyond competition for TTR binding, PBDEs and their metabolites can interfere with the activity of deiodinases and hepatic enzymes involved in thyroid hormone metabolism. Reduced FT4 levels can lead to decreased expression of LDL receptors and reduced activity of lipoprotein lipase, both of which would contribute to the elevated lipid levels observed.
+
+Furthermore, PBDEs may promote insulin resistance through direct effects on adipose tissue, including the induction of oxidative stress and inflammatory signaling pathways, which can impair insulin sensitivity independently of thyroid-mediated pathways.
+
+\subsection{Strengths and Limitations}
+
+A major strength of this study is the use of a large, nationally representative sample and the application of appropriate survey weights for pooled samples. We also adjusted for a robust set of confounders.
+
+However, the cross-sectional nature of NHANES limits our ability to infer causality. The use of pooled samples for PBDEs, while necessary for the analysis, reduces the resolution of individual exposure. Finally, despite adjusting for BMI and cotinine, residual confounding from other environmental or lifestyle factors remains a possibility.
+
+\section{Conclusion}
+
+In conclusion, our study demonstrates that serum levels of PBDEs are associated with lower free thyroid hormone levels and unfavorable metabolic profiles, including dyslipidemia and insulin resistance, in the U.S. population. These findings suggest that environmental exposure to brominated flame retardants remains a public health concern with potential implications for endocrine and metabolic health. Future longitudinal studies are needed to confirm these pathways and assess the long-term health consequences of PBDE exposure.
+
+\newpage
+
+\bibliographystyle{unsrtnat}
+\bibliography{../01-literature/references}
+
+\end{document}
